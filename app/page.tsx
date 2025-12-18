@@ -9,6 +9,8 @@ export default function Home() {
   const { theme } = useTheme()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     if (!window.UnicornStudio) {
       window.UnicornStudio = { isInitialized: false }
       const script = document.createElement("script")
@@ -19,7 +21,7 @@ export default function Home() {
           window.UnicornStudio.isInitialized = true
         }
       }
-      ;(document.head || document.body).appendChild(script)
+        ; (document.head || document.body).appendChild(script)
     } else if (!window.UnicornStudio.isInitialized) {
       window.UnicornStudio.init()
       window.UnicornStudio.isInitialized = true

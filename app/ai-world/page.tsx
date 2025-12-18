@@ -81,6 +81,8 @@ export default function AIWorld() {
   }
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const initializeBackground = () => {
       if (!window.UnicornStudio) {
         window.UnicornStudio = { isInitialized: false }
