@@ -14,6 +14,10 @@ import MobileNavigation from "@/components/mobile-navigation"
 import { useState, useEffect } from "react"
 import { Linkedin, Instagram, Facebook } from "lucide-react"
 
+// Force dynamic rendering to avoid SSR window errors
+export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
+
 const newsArticles = [
   {
     id: 1,
