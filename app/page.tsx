@@ -208,7 +208,11 @@ export default function HeroPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
-                  onClick={() => window.open('https://calendly.com/agencydigitailor/30min', '_blank')}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.open('https://calendly.com/agencydigitailor/30min', '_blank')
+                    }
+                  }}
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full px-8"
                 >
