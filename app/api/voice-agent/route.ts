@@ -1,9 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server"
 import OpenAI from "openai"
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Initialize OpenAI client lazily to avoid build-time errors
+function getOpenAIClient() {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY environment variable is not set")
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
+
 
 const AGENT_PROMPTS: Record<string, string> = {
   support:
@@ -19,6 +26,8 @@ const AGENT_PROMPTS: Record<string, string> = {
 
 export async function POST(request: NextRequest) {
   try {
+    const openai = getOpenAIClient()
+
     const formData = await request.formData()
     const audioFile = formData.get("audio") as File
     const agentType = formData.get("agentType") as string
