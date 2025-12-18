@@ -146,14 +146,10 @@ export default function HeroPage() {
         </div>
       </header>
 
-      {/* Services Section - Removed as component returns null */}
 
-      {/* Professional Client Logos Section */}
       <div id="clients" className="transition-colors duration-300">
         <ClientLogosSection />
       </div>
-
-      {/* Portfolio Section */}
 
       <section id="3d-slider" className="relative h-[400vh] bg-background transition-colors duration-300 py-0 my-0">
         <div className="sticky top-0 h-screen overflow-hidden h-80 py-10 w-fit">
